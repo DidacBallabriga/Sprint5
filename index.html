@@ -19,7 +19,12 @@
             <p class="card-text" id="joke"></p>
             </div>
             <div class="card-footer">
-                <button onclick="loadJokes()" class="btn btn-info">Next Joke</button>
+                <div class="d-flex justify-content-center">
+                <button class="star me-5" onclick="loadScore(1)">😥</button>
+                <button class="star" onclick="loadScore(2)">😐</button>
+                <button class="star ms-5" onclick="loadScore(3)">😂</button>
+            </div>
+                <button onclick="loadJokes()" class="btn btn-success mt-3">Next Joke</button>
               </div>
         </div>
     </div>
