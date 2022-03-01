@@ -10,10 +10,18 @@
     <title>Acudits</title>
 </head>
 <body>
-    <div class="container m-5">
-        <h1>Preparat per riure? 🤣</h1>
-        <button class="btn btn-success m-2" onclick="loadJokes()">Següent acudit</button>
-        <div id="joke"></div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1>Ready to laugh? 🤣</h1>
+            </div>
+            <div class="card-body text-center">
+            <p class="card-text" id="joke"></p>
+            </div>
+            <div class="card-footer">
+                <button onclick="loadJokes()" class="btn btn-info">Next Joke</button>
+              </div>
+        </div>
     </div>
 </body>
 </html>
