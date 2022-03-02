@@ -8,13 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a;
+//nivell 1
 let reportAcudits = [];
 const loadJokes = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch('https://icanhazdadjoke.com/slack');
-        const data = yield response.json();
+        let data = yield response.json();
         showDom(data);
-        console.log(data.attachments[0].text);
+        //console.log(data.attachments[0].text);
     }
     catch (error) {
         console.log(error);
@@ -22,25 +24,10 @@ const loadJokes = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const dayMonthYear = new Date();
 let date = dayMonthYear.toISOString();
-var rang = "0";
-function loadScore(score) {
-    if (score === 1) {
-        rang = "1";
-    }
-    else if (score === 2) {
-        rang = "2";
-    }
-    else {
-        rang = "3";
-    }
-    loadJokes();
-    return rang;
-}
+let dom = (_a = document.getElementById("joke")) === null || _a === void 0 ? void 0 : _a.innerHTML;
 function showDom(data) {
-    var _a;
-    let newJoke = new Joke(data.attachments[0].text, rang, date);
-    reportAcudits.push(newJoke);
-    return (_a = document.getElementById("joke")) === null || _a === void 0 ? void 0 : _a.innerHTML = data.attachments[0].text;
+    dom = document.getElementById("joke").innerHTML = data.attachments[0].text;
+    return dom;
 }
 class Joke {
     constructor(joke, score, date) {
@@ -50,4 +37,41 @@ class Joke {
         return { joke, score, date };
     }
 }
+var score = "0";
+function loadScore(rang) {
+    if (rang === 1) {
+        score = "1";
+    }
+    else if (rang === 2) {
+        score = "2";
+    }
+    else {
+        score = "3";
+    }
+    if (dom !== undefined) {
+        let newJoke = new Joke(dom, score, date);
+        reportAcudits.push(newJoke);
+    }
+    loadJokes();
+    return score;
+}
+// nivell 2
+const loadTime = () => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
+    try {
+        const respon = yield fetch('https://www.metaweather.com/api/location/753692');
+        const time = yield respon.json();
+        const weatherState = time.consolidated_weather[0].weather_state_name;
+        const actualTemp = time.consolidated_weather[0].the_temp;
+        const iconWeather = time.consolidated_weather[0].weather_state_abbr;
+        const iconUrl = "https://www.metaweather.com/static/img/weather/" + iconWeather + ".svg";
+        console.log("weatherState ", weatherState);
+        console.log("actualTemp ", actualTemp.toFixed(0));
+        console.log("iconWeather ", iconWeather);
+        let domTime = (_b = document.getElementById("timeApp")) === null || _b === void 0 ? void 0 : _b.innerHTML = `<img src="${iconUrl}"> <div class="h2"><h2>${actualTemp.toFixed(0)}°C</h2><br><h2>${weatherState}</h2></div>`;
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
 //# sourceMappingURL=index.js.map
