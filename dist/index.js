@@ -42,12 +42,15 @@ var score = "0";
 function loadScore(rang) {
     if (rang === 1) {
         score = "1";
+        console.log("Jokes voted: ", reportAcudits);
     }
     else if (rang === 2) {
         score = "2";
+        console.log("Jokes voted: ", reportAcudits);
     }
     else {
         score = "3";
+        console.log("Jokes voted: ", reportAcudits);
     }
     if (dom !== undefined) {
         let newJoke = new Joke(dom, score, date);
@@ -101,12 +104,59 @@ function aleatorio() {
     let number = Math.random() * 3;
     if (number < 1) {
         chuckNorrisApi();
+        randomImages();
     }
     else if (number > 1 && number < 2) {
         geekJokeApi();
+        randomImages();
     }
     else {
         loadJokesApi();
+        randomImages();
+    }
+}
+//nivell 3
+function randomImages() {
+    let number = Math.random() * 8;
+    if (number < 1) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/blue.svg')";
+        document.getElementById("image").style.background = "url('./uploads/blue.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/blue.svg')";
+    }
+    if (number > 1 && number < 2) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/blue1.svg')";
+        document.getElementById("image").style.background = "url('./uploads/blue1.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/blue1.svg')";
+    }
+    if (number > 2 && number < 3) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/green.svg')";
+        document.getElementById("image").style.background = "url('./uploads/green.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/green.svg')";
+    }
+    if (number > 3 && number < 4) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/green1.svg')";
+        document.getElementById("image").style.background = "url('./uploads/green1.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/green1.svg')";
+    }
+    if (number > 4 && number < 5) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/purple.svg')";
+        document.getElementById("image").style.background = "url('./uploads/purple.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/purple.svg')";
+    }
+    if (number > 5 && number < 6) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/purple1.svg')";
+        document.getElementById("image").style.background = "url('./uploads/purple1.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/purple1.svg')";
+    }
+    if (number > 6 && number < 7) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/red.svg')";
+        document.getElementById("image").style.background = "url('./uploads/red.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/red.svg')";
+    }
+    if (number > 7) {
+        document.getElementById("backgroundImage").style.background = "url('./uploads/red1.svg')";
+        document.getElementById("image").style.background = "url('./uploads/red1.svg')";
+        document.getElementById("image1").style.background = "url('./uploads/red1.svg')";
     }
 }
 //# sourceMappingURL=index.js.map
