@@ -92,14 +92,11 @@ const geekJokeApi = async () => {
 function aleatorio(){
     let number:number = Math.random()*3;
     if(number<1){
-        console.log("chuckNorrisApi")
         chuckNorrisApi();
     } else if(number>1&&number<2){
-        console.log("geekJokeApi")
         geekJokeApi();
     }
     else {
-        console.log("loadJokesApi")
         loadJokesApi();
     }
 }

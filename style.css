@@ -59,7 +59,19 @@ img, svg {
     }
 }
 .btn:hover{
-
     transform: scale(1.15);
     transition-duration: .50s;
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 25rem;
+        height: 20rem;
+  }
+}
+@media (max-width: 450px) {
+    .card {
+        width: 18rem;
+        height: 25rem;
+  }
 }
