@@ -24,11 +24,16 @@ h1{
     font-size: 1.8rem;
     background-color: rgba(0,0,0,0.0) !important;
 }
+.star:hover{
+    transform: rotate(360deg) scale(1.5);
+    transition: transform 0.5s;
+}
 #timeApp{
     position: absolute;
     top: 1%;
     left: 1%;
     display: flex;
+    animation: right 2s ease-in;
 }
 h2{
     color: grey;
@@ -41,4 +46,20 @@ img, svg {
     margin: 0.5rem;
     border-right: 3px solid grey;
     padding-right: 0.5rem;
+}
+
+@keyframes right{
+    0%{
+        opacity: 0;
+        transform: translate(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+.btn:hover{
+
+    transform: scale(1.15);
+    transition-duration: .50s;
 }

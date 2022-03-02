@@ -1,11 +1,12 @@
 //nivell 1
 let reportAcudits: string[{}] = [];
 
-const loadJokes = async () => {
+const loadJokesApi = async () => {
     try{
         const response = await fetch('https://icanhazdadjoke.com/slack')
         let data = await response.json();
-        showDom(data)
+        let dataJoke = data.attachments[0].text;
+        showDom(dataJoke)
         //console.log(data.attachments[0].text);
     } catch(error){
         console.log(error);
@@ -17,7 +18,7 @@ let date = dayMonthYear.toISOString();
 let dom:string = document.getElementById("joke")?.innerHTML;
 
 function showDom(data:string){
-    dom = document.getElementById("joke").innerHTML = data.attachments[0].text;
+    dom = document.getElementById("joke").innerHTML = data;
     return dom;
 }
 
@@ -46,7 +47,7 @@ function loadScore(rang:number){
     let newJoke = new Joke(dom,score,date);
     reportAcudits.push(newJoke)   
     }
-    loadJokes();
+    aleatorio();
     return score;
 }
 
@@ -59,11 +60,47 @@ const loadTime = async () => {
         const actualTemp = time.consolidated_weather[0].the_temp;
         const iconWeather = time.consolidated_weather[0].weather_state_abbr;
         const iconUrl = "https://www.metaweather.com/static/img/weather/"+iconWeather+".svg"
-        console.log("weatherState ",weatherState);
-        console.log("actualTemp ",actualTemp.toFixed(0));
-        console.log("iconWeather ",iconWeather);
         let domTime=document.getElementById("timeApp")?.innerHTML = `<img src="${iconUrl}"> <div class="h2"><h2>${actualTemp.toFixed(0)}°C</h2><br><h2>${weatherState}</h2></div>`;
     } catch(error){
         console.log(error);
     }
 }
+loadTime();
+//Chuck Norris API
+const chuckNorrisApi = async () => {
+    try{
+        const respon = await fetch('http://api.icndb.com/jokes/random');
+        const joke = await respon.json();
+        const chuckNorrisJoke = joke.value.joke;
+        showDom(chuckNorrisJoke);
+    } catch(error){
+        console.log(error);
+    }
+}
+//Geek Joke API
+const geekJokeApi = async () => {
+    try{
+        const respon = await fetch('https://geek-jokes.sameerkumar.website/api?format=json');
+        const joke = await respon.json();
+        const geekJoke = joke.joke;
+        showDom(geekJoke);
+    } catch(error){
+        console.log(error);
+    }
+}
+
+function aleatorio(){
+    let number:number = Math.random()*3;
+    if(number<1){
+        console.log("chuckNorrisApi")
+        chuckNorrisApi();
+    } else if(number>1&&number<2){
+        console.log("geekJokeApi")
+        geekJokeApi();
+    }
+    else {
+        console.log("loadJokesApi")
+        loadJokesApi();
+    }
+}
+
