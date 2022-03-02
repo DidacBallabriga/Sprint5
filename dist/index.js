@@ -8,11 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a;
 let reportAcudits = [];
 const loadJokes = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch('https://icanhazdadjoke.com/slack');
-        const data = yield response.json();
+        let data = yield response.json();
         showDom(data);
         console.log(data.attachments[0].text);
     }
@@ -22,25 +23,10 @@ const loadJokes = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const dayMonthYear = new Date();
 let date = dayMonthYear.toISOString();
-var rang = "0";
-function loadScore(score) {
-    if (score === 1) {
-        rang = "1";
-    }
-    else if (score === 2) {
-        rang = "2";
-    }
-    else {
-        rang = "3";
-    }
-    loadJokes();
-    return rang;
-}
+let dom = (_a = document.getElementById("joke")) === null || _a === void 0 ? void 0 : _a.innerHTML;
 function showDom(data) {
-    var _a;
-    let newJoke = new Joke(data.attachments[0].text, rang, date);
-    reportAcudits.push(newJoke);
-    return (_a = document.getElementById("joke")) === null || _a === void 0 ? void 0 : _a.innerHTML = data.attachments[0].text;
+    dom = document.getElementById("joke").innerHTML = data.attachments[0].text;
+    return dom;
 }
 class Joke {
     constructor(joke, score, date) {
@@ -50,4 +36,32 @@ class Joke {
         return { joke, score, date };
     }
 }
+var score = "0";
+function loadScore(rang) {
+    if (rang === 1) {
+        score = "1";
+    }
+    else if (rang === 2) {
+        score = "2";
+    }
+    else {
+        score = "3";
+    }
+    if (dom !== undefined) {
+        let newJoke = new Joke(dom, score, date);
+        reportAcudits.push(newJoke);
+    }
+    loadJokes();
+    return score;
+}
+/*const loadTime = async () => {
+    try{
+        const response = await fetch('https://www.metaweather.com/api/location/753692')
+        const data = await response.json();
+        showDom(data)
+        console.log(data);
+    } catch(error){
+        console.log(error);
+    }
+}*/ 
 //# sourceMappingURL=index.js.map
