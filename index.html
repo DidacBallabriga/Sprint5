@@ -10,10 +10,28 @@
     <title>Acudits</title>
 </head>
 <body>
-    <div class="container m-5">
-        <h1>Preparat per riure? 🤣</h1>
-        <button class="btn btn-success m-2" onclick="loadJokes()">Següent acudit</button>
-        <div id="joke"></div>
+    <div id="timeApp"></div>
+    <div id="backgroundImage" class="container-fluid position-relative">
+        <div id="image"></div>
+        <div id="image1"></div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="text-center">
+            <div>
+                <h1>Ready to laugh? 🤣</h1>
+            </div>
+            <div class="text-center">
+            <p id="joke"></p>
+            </div>
+            <div>
+                <div class="d-flex justify-content-center">
+                <button class="star me-5" onclick="loadScore(1)">😥</button>
+                <button class="star" onclick="loadScore(2)">😐</button>
+                <button class="star ms-5" onclick="loadScore(3)">😂</button>
+            </div>
+                <button onclick="aleatorio()" class="next">Next Joke</button>
+              </div>
+        </div>
     </div>
+</div>
 </body>
 </html>
