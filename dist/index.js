@@ -9,6 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var _a;
+
+alert("Use Allow CORS: Access-Control-Allow-Origin (extension) for use API Time")
 //nivell 1
 let reportAcudits = [];
 const loadJokesApi = () => __awaiter(void 0, void 0, void 0, function* () {
